@@ -64,9 +64,7 @@ jQuery('#cancel').on('click', function(e) {
 function gotoRegister(e) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            window.location.href = "/register" + window.location.search
-        } else if (this.readyState == 4 && this.status == 400) {
+        if (this.readyState == 4) {
             window.location.href = "/register" + window.location.search
         }
     };

@@ -85,9 +85,7 @@ $('#projects').on('change', function() {
 function logout() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            window.location.href = "/login" + window.location.search
-        } else if (this.readyState == 4 && this.status == 400) {
+        if (this.readyState == 4) {
             window.location.href = "/login" + window.location.search
         }
     };
