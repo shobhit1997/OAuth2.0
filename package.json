@@ -1,0 +1,21 @@
+{
+  "name": "oauth2server",
+  "version": "1.0.0",
+  "description": "An Authentication Server with OAuth 2.0 capability",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shobhit Agarwal",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.13",
+    "ramda": "^0.27.0"
+  }
+}

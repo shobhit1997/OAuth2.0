@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Register | OAuth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body class="centered-form">
+
+    <div class="centered-form__form" id="div_register">
+        <form id="register-form">
+            <div class="form-field">
+                <h3>Register Form</h3>
+            </div>
+            <div class="form-field">
+                <label>Name</label>
+                <input type="text" id="name" autofocus required/>
+            </div>
+            <div class="form-field">
+                <label>Email</label>
+                <input type="email" id="email" required/>
+            </div>
+            <div class="form-field">
+                <label>Phone No.</label>
+                <input type="number" id="phone" required minlength="10" />
+            </div>
+            <div class="form-field">
+                <label>Password</label>
+                <input type="password" id="password" minlength="8" required />
+            </div>
+            <div class="form-field">
+                <button>Register</button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="gotoLogin()">Login Using Existing Account</button>
+            </div>
+        </form>
+    </div>
+    <div class="centered-form__form__hidden" id="div_oauth">
+        <form id="oauth-form">
+            <div class="form-field">
+                <h3>OAuth Request</h3>
+            </div>
+            <div class="form-field">
+                <label id="confirm_text"></label>
+            </div>
+            <div class="form-field">
+                <button type="submit">Allow</button>
+            </div>
+            <div class="form-field">
+                <button type="button" id="cancel">Cancel</button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="gotoLogin()">Use Separate Account</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
+</body>
+
+</html>

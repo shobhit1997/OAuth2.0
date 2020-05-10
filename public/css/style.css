@@ -1,0 +1,97 @@
+button,
+button:hover {
+    border: none;
+    color: #fff;
+    padding: 10px
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: .95rem
+}
+
+li,
+ul {
+    list-style-position: inside
+}
+
+h3 {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5rem
+}
+
+button {
+    background: #265f82;
+    cursor: pointer;
+    transition: background .3s ease
+}
+
+button:hover {
+    background: #1F4C69
+}
+
+button:disabled {
+    cursor: default;
+    background: #698ea5
+}
+
+.centered-form {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    overflow-x: hidden;
+    justify-content: center;
+    background: -moz-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(49, 84, 129, 1)), color-stop(100%, rgba(39, 107, 130, 1)));
+    background: -webkit-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+    background: -o-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+    background: -ms-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+    background: linear-gradient(325deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%)
+}
+
+.centered-form__form {
+    background: rgba(250, 250, 250, .9);
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin: 20px;
+    width: 300px
+}
+
+.centered-form__form__hidden {
+    background: rgba(250, 250, 250, .9);
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin: 20px;
+    width: 300px;
+    display: none;
+}
+
+.form-field {
+    margin: 20px 0
+}
+
+.form-field>* {
+    width: 100%
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 7px
+}
+
+.form-field input,
+.form-field select {
+    border: 1px solid #e1e1e1;
+    padding: 10px
+}
+
+a {
+    color: #fff;
+}

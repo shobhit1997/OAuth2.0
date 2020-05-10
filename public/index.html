@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects | OAuth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body class="centered-form">
+
+    <div class="centered-form__form">
+        <form id="project-form">
+            <div class="form-field">
+                <h3>Projects</h3>
+            </div>
+            <div class="form-field">
+                <label>Select Project</label>
+                <select id="projects"></select>
+            </div>
+            <div class="form-field">
+                <label>Project Name</label>
+                <input type="text" id="project_name" disabled>
+            </div>
+            <div class="form-field">
+                <label>Project ID</label>
+                <input type="text" id="project_id" disabled>
+            </div>
+            <div class="form-field">
+                <label>Project Secret</label>
+                <input type="text" id="project_secret" disabled>
+            </div>
+            <div class="form-field">
+                <label>Project Scope</label>
+                <input type="text" id="project_scope" disabled>
+            </div>
+            <div class="form-field">
+                <label>Redirect Urls</label>
+                <ul id="redirect_urls">
+                </ul>
+            </div>
+            <div class="form-field">
+                <input type="text" id="new_url" placeholder="Redirect Url">
+            </div>
+            <div class="form-field">
+                <button>Add Redirect Url</button>
+            </div>
+            <div class="form-field">
+                <button><a href="/project">Add Project</a></button>
+            </div>
+            <div class="form-field">
+                <button type="button" onclick="logout()">Logout</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>
+
+</html>
