@@ -70,7 +70,7 @@ function gotoRegister(e) {
             window.location.href = "/register" + window.location.search
         }
     };
-    xhttp.open("DELETE", window.location.origin + "/api/user/logout" + search, true);
+    xhttp.open("DELETE", window.location.origin + "/api/user/logout", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader("x-auth", localStorage.getItem('x-auth'));
     xhttp.send();
