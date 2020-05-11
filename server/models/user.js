@@ -60,6 +60,16 @@ UserSchema.methods.generateOAuthCode = function(project) {
     });
 };
 
+UserSchema.methods.generateAccessToken = function(scope) {
+    var user = this;
+    var access = 'access_token';
+    var token = jwt.sign({ _id: user._id.toHexString(), access, scope }, process.env.JWT_SECRET).toString();
+    user.tokens.push({ access, token });
+    return user.save().then(function() {
+        return token;
+    });
+};
+
 
 
 UserSchema.statics.findByToken = async function(token) {
@@ -83,7 +93,7 @@ UserSchema.statics.findByToken = async function(token) {
         'tokens.access': decoded.access
     });
     return {
-        token: decoded,
+        decoded,
         user
     }
 };

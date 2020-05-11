@@ -15,7 +15,7 @@ router.route('/register')
         user.save().then(function() {
             return user.generateAuthToken();
         }).then(function(token) {
-            res.header('x-auth', token).send(R.pick(['name', 'email', 'phone'], user));
+            res.header('x-auth', token).send(R.pick(['name'], user));
 
         }).catch(function(e) {
             res.status(400).send(e);
@@ -28,12 +28,10 @@ router.route('/login')
         try {
             var user = await User.findByCredentials(body.email, body.password)
             var token = await user.generateAuthToken()
-            res.header('x-auth', token).send(R.pick(['name', 'email', 'phone'], user));
+            res.header('x-auth', token).send(R.pick(['name'], user));
         } catch (e) {
             res.sendStatus(500);
         }
-
-
     });
 router.route('/oauthCode')
     .get(projectMiddleware, authenticate, async function(req, res) {
