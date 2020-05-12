@@ -72,7 +72,7 @@ UserSchema.methods.generateAccessToken = function(scope) {
 
 
 
-UserSchema.statics.findByToken = async function(token) {
+UserSchema.statics.findByToken = async function(token, access) {
     var User = this;
     var decoded;
 
@@ -81,16 +81,12 @@ UserSchema.statics.findByToken = async function(token) {
         decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     } catch (e) {
-
-        return new Promise(function(resolve, reject) {
-            reject();
-        });
-
+        return Promise.reject({ code: 401, message: "Invalid Code" });
     }
     user = await User.findOne({
         _id: decoded._id,
         'tokens.token': token,
-        'tokens.access': decoded.access
+        'tokens.access': access
     });
     return {
         decoded,
@@ -102,7 +98,7 @@ UserSchema.statics.findByCredentials = function(email, password) {
     var User = this;
     return User.findOne({ email }).then(function(user) {
         if (!user) {
-            return Promise.reject();
+            return Promise.reject({ code: 400, message: "Invalid Credentials" });
         }
         return new Promise(function(resolve, reject) {
             bcrypt.compare(password, user.password, function(err, res) {
@@ -132,7 +128,7 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods.removeToken = function(token) {
     var user = this;
-    return user.update({
+    return user.updateOne({
         $pull: {
             tokens: { token }
         }

@@ -20,9 +20,12 @@ jQuery('#project-form').on('submit', function(e) {
                 $('#redirect_urls').append(`<li class="input-style"> 
                                         ${jQuery("#new_url").val()} 
                                     </li>`);
+            } else if (this.readyState == 4) {
+                var res = JSON.parse(this.responseText);
+                alert(res.message || "Unknown Error");
             }
         };
-        xhttp.open("POST", window.location.origin + "/api/project/addRedirectUrl", true);
+        xhttp.open("POST", window.location.origin + "/api/project/redirectUrl", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.setRequestHeader("x-auth", localStorage.getItem('x-auth'));
         var jsonObj = {
@@ -59,6 +62,10 @@ function renderProject() {
                                        ${urls[i]} 
                                   </li>`);
             }
+        } else if (this.readyState == 4) {
+            console.log(JSON.parse(this.responseText));
+            var res = JSON.parse(this.responseText);
+            alert(res.message || "Unknown Error");
         }
     };
     xhttp.open("GET", window.location.origin + "/api/project", true);
@@ -94,4 +101,13 @@ function logout() {
     xhttp.setRequestHeader("x-auth", localStorage.getItem('x-auth'));
     xhttp.send();
     localStorage.removeItem("x-auth");
+}
+
+function Toggle() {
+    var temp = document.getElementById("project_secret");
+    if (temp.type === "password") {
+        temp.type = "text";
+    } else {
+        temp.type = "password";
+    }
 }

@@ -13,8 +13,9 @@ jQuery('#project-form').on('submit', function(e) {
             var json = JSON.parse(this.responseText);
             prompt("Copy to clipboard: Ctrl+C, Enter", "{projectID : " + json.projectID + ",projectSecret : " + json.projectSecret + ",scope : " + json.scope + "}");
             window.location.href = '/';
-        } else if (this.readyState == 4 && this.status == 406) {
-            alert('Retry with different name');
+        } else if (this.readyState == 4) {
+            var res = JSON.parse(this.responseText);
+            alert(res.message || "Unknown Error");
         }
     };
     xhttp.open("POST", window.location.origin + "/api/project", true);

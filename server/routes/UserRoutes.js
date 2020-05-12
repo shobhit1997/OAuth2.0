@@ -1,7 +1,7 @@
 const express = require('express');
 const R = require('ramda');
 
-const authenticate = require('../middlewares/authenticate')
+const { verifyAuthToken } = require('../middlewares/authenticate')
 const projectMiddleware = require('../middlewares/projectMiddleware')
 const User = require('../models/user');
 
@@ -18,7 +18,8 @@ router.route('/register')
             res.header('x-auth', token).send(R.pick(['name'], user));
 
         }).catch(function(e) {
-            res.status(400).send(e);
+            console.log(e);
+            res.status(400).send({ code: 400, message: e });
         });
     });
 
@@ -30,24 +31,17 @@ router.route('/login')
             var token = await user.generateAuthToken()
             res.header('x-auth', token).send(R.pick(['name'], user));
         } catch (e) {
-            res.sendStatus(500);
+            console.log(e);
+            res.status(400).send({ code: 400, message: e });
         }
-    });
-router.route('/oauthCode')
-    .get(projectMiddleware, authenticate, async function(req, res) {
-        if (!req.project) {
-            res.status(400).send({ message: 'Invalid Project Data' });
-        }
-        var code = await req.user.generateOAuthCode(req.project);
-        redirectURL = `${req.query.redirectURL}?code=${code}`
-        return res.send({ redirectURL });
     });
 router.route('/logout')
-    .delete(authenticate, function(req, res) {
+    .delete(verifyAuthToken, function(req, res) {
         req.user.removeToken(req.token).then(function() {
-            res.status(200).send({ message: "Logout Successfull" });
-        }).catch(function(err) {
-            res.status(400).send();
+            res.send({ message: "Logout Successfull" });
+        }).catch(function(e) {
+            console.log(e);
+            res.status(400).send({ code: 400, message: e });
         });
     });
 

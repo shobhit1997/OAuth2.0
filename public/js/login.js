@@ -26,7 +26,8 @@ jQuery('#login-form').on('submit', function(e) {
             } else {
                 window.location.href = '/';
             }
-        } else if (this.readyState == 4 && this.status == 400) {
+        } else if (this.readyState == 4) {
+            console.log(JSON.parse(this.responseText));
             alert("Invalid Username or Password")
         }
     };
@@ -46,12 +47,13 @@ jQuery('#oauth-form').on('submit', function(e) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             window.location.replace(JSON.parse(this.responseText).redirectURL);
-        } else if (this.readyState == 4 && this.status == 400) {
+        } else if (this.readyState == 4) {
+            var res = JSON.parse(this.responseText);
             $("body").empty();
-            $("body").append("<p>Invalid Project Data</p>");
+            $("body").append(`<p>${res.message}</p>`);
         }
     };
-    xhttp.open("GET", window.location.origin + "/api/user/oauthCode" + search, true);
+    xhttp.open("GET", window.location.origin + "/api/oauth/code" + search, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader("x-auth", localStorage.getItem('x-auth'));
     xhttp.send();
@@ -84,12 +86,22 @@ function verifyProject() {
             var project = jsonData;
             $('#confirm_text').text(`${project.name} wants to access your details`)
             $('#scope').text(`Scope : ${project.scope}`)
-        } else if (this.status == 400) {
+        } else if (this.readyState == 4) {
+            var res = JSON.parse(this.responseText);
             $("body").empty();
-            $("body").append("<p>Invalid Project Data</p>");
+            $("body").append(`<p>${res.message}</p>`);
         }
     };
     xhttp.open("GET", window.location.origin + "/api/oauth/verifyproject" + search, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
+}
+
+function Toggle() {
+    var temp = document.getElementById("password");
+    if (temp.type === "password") {
+        temp.type = "text";
+    } else {
+        temp.type = "password";
+    }
 }
