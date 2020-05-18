@@ -19,7 +19,7 @@ function getAccessToken() {
             $("body").append(`<p>${res.message}</p>`);
         }
     };
-    xhttp.open("GET", "https://oauth-v2-server.herokuapp.com/api/oauth/token" + search, true);
+    xhttp.open("GET", "https://college-erp-oauth.herokuapp.com/api/oauth/token" + search, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
@@ -37,7 +37,7 @@ function getUserInfo(access_token) {
             $("body").append(`<p>${res.message}</p>`);
         }
     };
-    xhttp.open("GET", "https://oauth-v2-server.herokuapp.com/api/oauth/userinfo" + search, true);
+    xhttp.open("GET", "https://college-erp-oauth.herokuapp.com/api/oauth/userinfo" + search, true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }

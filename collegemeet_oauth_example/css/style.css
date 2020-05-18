@@ -26,18 +26,18 @@ h3 {
 }
 
 button {
-    background: #265f82;
+    background: #822626;
     cursor: pointer;
     transition: background .3s ease
 }
 
 button:hover {
-    background: #1F4C69
+    background: rgb(105, 31, 31)
 }
 
 button:disabled {
     cursor: default;
-    background: #698ea5
+    background: #a56969
 }
 
 .centered-form {
@@ -46,12 +46,12 @@ button:disabled {
     width: 100vw;
     overflow-x: hidden;
     justify-content: center;
-    background: -moz-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(49, 84, 129, 1)), color-stop(100%, rgba(39, 107, 130, 1)));
-    background: -webkit-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
-    background: -o-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
-    background: -ms-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
-    background: linear-gradient(325deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%)
+    background: -moz-linear-gradient(125deg, rgb(130, 39, 39) 0, rgb(129, 49, 49) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgb(129, 49, 49)), color-stop(100%, rgb(130, 39, 39)));
+    background: -webkit-linear-gradient(125deg, rgb(130, 39, 39) 0, rgb(129, 49, 49) 100%);
+    background: -o-linear-gradient(125deg, rgb(130, 39, 39) 0, rgb(129, 49, 49) 100%);
+    background: -ms-linear-gradient(125deg, rgb(130, 39, 39) 0, rgb(129, 49, 49) 100%);
+    background: linear-gradient(325deg, rgb(130, 39, 39) 0, rgb(129, 49, 49) 100%)
 }
 
 .centered-form__form {
